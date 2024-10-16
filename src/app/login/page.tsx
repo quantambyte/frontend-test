@@ -48,6 +48,7 @@ export default function Login() {
       justifyContent='center'
       alignItems='center'
       height='90vh'
+      data-testid='login-page'
     >
       <Stack
         component='form'
