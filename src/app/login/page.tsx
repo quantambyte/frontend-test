@@ -24,8 +24,8 @@ export default function Login() {
   } = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      username: 'emilys',
-      password: 'emilyspass',
+      username: '',
+      password: '',
     },
   });
 
