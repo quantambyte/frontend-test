@@ -19,6 +19,13 @@ Welcome to `frontend-test`, a cutting-edge **Next.js 14** application crafted wi
 - **Routing**: Dynamic routes powered by `Next.js App Router` for a fluid navigation experience.
 - **Table Handling**: [Tanstack React Table](https://tanstack.com/table) - Masterful table management for intricate data.
 
+# 🚀 Deployment
+
+Our application is seamlessly deployed using **Vercel**, ensuring high performance and scalability. You can access the live version of the app at [frontend-test-amber-nine.vercel.app](https://frontend-test-amber-nine.vercel.app).
+
+- **Platform**: [Vercel](https://vercel.com/) - A cloud platform for static sites and Serverless Functions that fits perfectly with our Next.js application.
+- **URL**: [frontend-test-amber-nine.vercel.app](https://frontend-test-amber-nine.vercel.app) - Visit our live application to explore its features and functionality.
+
 # 🔍 Modules
 
 ## 1. Authentication (Auth)
