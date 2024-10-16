@@ -47,10 +47,26 @@ export const useProductTable = ({
       enableSorting: true,
     },
     {
+      accessorKey: 'description',
+      header: 'Description',
+      enableSorting: true,
+    },
+    {
+      accessorKey: 'category',
+      header: 'Category',
+      enableSorting: true,
+    },
+    {
       accessorKey: 'price',
       header: 'Price',
       cell: (info) => `$${info.getValue<number>().toFixed(2)}`,
       enableSorting: true,
+    },
+    {
+      accessorKey: 'discountPercentage',
+      header: 'Discount',
+      enableSorting: true,
+      cell: (info) => `${info.getValue<number>().toFixed(2)}%`,
     },
     {
       accessorKey: 'rating',
@@ -61,6 +77,12 @@ export const useProductTable = ({
       accessorKey: 'stock',
       header: 'Stock',
       enableSorting: true,
+    },
+    {
+      accessorKey: 'tags',
+      header: 'Tags',
+      cell: (info) => info.getValue<string[]>().join(', '),
+      enableSorting: false,
     },
     {
       accessorKey: 'brand',
