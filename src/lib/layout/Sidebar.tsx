@@ -5,7 +5,6 @@ import {
   Box,
   Drawer,
   List,
-  ListItemText,
   IconButton,
   Typography,
   useMediaQuery,
@@ -13,7 +12,16 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useRouter } from 'next/navigation';
-import { SidebarContainer, LogoWrapper, SidebarItem } from './style';
+import { SidebarContainer, LogoWrapper } from './style';
+
+import NestedList from '../components/nestedList';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PeopleIcon from '@mui/icons-material/People';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import ReportIcon from '@mui/icons-material/Report';
 
 const drawerWidth = 240;
 
@@ -21,17 +29,74 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const router = useRouter();
 
   const menuItems = [
-    { text: 'Analytics', route: '/' },
-    { text: 'Project', route: '/' },
+    {
+      id: '1',
+      text: 'Dashboard',
+      icon: <DashboardIcon />,
+      children: [
+        {
+          id: '1-1',
+          text: 'Sales Overview',
+          route: '/sales',
+          icon: <BarChartIcon />,
+        },
+        {
+          id: '1-2',
+          text: 'Revenue Analytics',
+          route: '/revenue',
+          icon: <AssessmentIcon />,
+        },
+        {
+          id: '1-3',
+          text: 'Product Performance',
+          route: '/products',
+          icon: <ShoppingCartIcon />,
+        },
+      ],
+    },
+    {
+      id: '2',
+      text: 'Management',
+      icon: <PeopleIcon />,
+      children: [
+        { id: '2-1', text: 'Users', route: '/users', icon: <PeopleIcon /> },
+        { id: '2-2', text: 'Teams', route: '/teams', icon: <PeopleIcon /> },
+        {
+          id: '2-3',
+          text: 'Settings',
+          route: '/settings',
+          icon: <SettingsIcon />,
+        },
+      ],
+    },
+    {
+      id: '3',
+      text: 'Reports',
+      icon: <ReportIcon />,
+      children: [
+        {
+          id: '3-1',
+          text: 'Sales Reports',
+          route: '/reports/sales',
+          icon: <BarChartIcon />,
+        },
+        {
+          id: '3-2',
+          text: 'Performance Reports',
+          route: '/reports/performance',
+          icon: <AssessmentIcon />,
+        },
+        {
+          id: '3-3',
+          text: 'Revenue Reports',
+          route: '/reports/revenue',
+          icon: <AssessmentIcon />,
+        },
+      ],
+    },
   ];
-
-  const handleNavigation = (route: string) => {
-    router.push(route);
-    setIsOpen(false);
-  };
 
   return (
     <Box data-testid='sidebar-box'>
@@ -52,13 +117,12 @@ export default function Sidebar() {
             </LogoWrapper>
             <List data-testid='menu-list'>
               {menuItems.map((item) => (
-                <SidebarItem
-                  key={item.text}
-                  onClick={() => handleNavigation(item.route)}
-                  data-testid={`menu-item-${item.text.toLowerCase()}`}
-                >
-                  <ListItemText primary={item.text} />
-                </SidebarItem>
+                <NestedList
+                  key={item.id}
+                  text={item.text}
+                  icon={item.icon}
+                  children={item.children}
+                />
               ))}
             </List>
           </SidebarContainer>
@@ -93,13 +157,12 @@ export default function Sidebar() {
               </LogoWrapper>
               <List data-testid='menu-list'>
                 {menuItems.map((item) => (
-                  <SidebarItem
-                    key={item.text}
-                    onClick={() => handleNavigation(item.route)}
-                    data-testid={`menu-item-${item.text.toLowerCase()}`}
-                  >
-                    <ListItemText primary={item.text} />
-                  </SidebarItem>
+                  <NestedList
+                    key={item.id}
+                    text={item.text}
+                    icon={item.icon}
+                    children={item.children}
+                  />
                 ))}
               </List>
             </SidebarContainer>
