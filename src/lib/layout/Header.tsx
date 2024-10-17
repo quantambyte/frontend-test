@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <AppBar
-      position='sticky'
+      position='fixed'
       sx={{
         backgroundColor: '#fff',
         color: '#000',
@@ -36,8 +36,8 @@ export default function Header() {
         zIndex: 9999,
       }}
     >
-      <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Stack direction='row' alignItems='center' gap={`${isMobile ? 1 : 20}`}>
+      <Toolbar sx={{ display: 'flex' }}>
+        <Stack direction='row' alignItems='center' width={'280px'}>
           {isMobile && (
             <IconButton edge='start' color='inherit' sx={{ mr: 2 }}>
               <MenuIcon />
@@ -45,11 +45,17 @@ export default function Header() {
           )}
 
           <Typography variant='h6'>LOGO</Typography>
-
-          <Search />
         </Stack>
-        <Box display='flex' gap={2} height={40}>
-          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+        <Box
+          display='flex'
+          justifyContent='space-between'
+          gap={2}
+          height={40}
+          width={1}
+        >
+          <Search />
+
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton color='inherit'>
               <SensorsIcon />
             </IconButton>
@@ -67,26 +73,25 @@ export default function Header() {
             <IconButton color='inherit'>
               <FullscreenIcon />
             </IconButton>
-          </Box>
-
-          <Box
-            display='flex'
-            alignItems='center'
-            sx={{
-              gap: 1,
-              backgroundColor: 'lightgray',
-              padding: 1,
-              borderRadius: 99,
-            }}
-          >
-            <Avatar
-              sx={{ width: 30, height: 30 }}
-              alt='User Avatar'
-              src='/static/images/avatar/1.jpg'
-            />
-            <IconButton color='inherit'>
-              <SettingsIcon />
-            </IconButton>
+            <Box
+              display='flex'
+              alignItems='center'
+              sx={{
+                gap: 1,
+                backgroundColor: 'lightgray',
+                padding: 1,
+                borderRadius: 99,
+              }}
+            >
+              <Avatar
+                sx={{ width: 30, height: 30 }}
+                alt='User Avatar'
+                src='/static/images/avatar/1.jpg'
+              />
+              <IconButton color='inherit'>
+                <SettingsIcon />
+              </IconButton>
+            </Box>
           </Box>
         </Box>
       </Toolbar>

@@ -14,7 +14,7 @@ export default async function ProductsPage() {
 
   return (
     <main data-testid='products-page'>
-      <Box bgcolor='white' p={1} borderRadius={1} mt={2} mx={2}>
+      <Box bgcolor='white' p={1} borderRadius={1} mt={10} mx={2}>
         <Typography variant='h5'>Products</Typography>
       </Box>
       <ProductTable initialResponse={response} />
