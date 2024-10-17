@@ -68,4 +68,5 @@ export const StyledTableContainer = styled(TableContainer)`
   border-radius: 8px;
   background-color: #ffffff;
   border: 1px solid #eeeeee;
+  overflow-x: auto;
 `;

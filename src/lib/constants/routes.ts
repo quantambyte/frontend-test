@@ -11,5 +11,5 @@
 export const ROUTES = {
   PRODUCTS: '/products',
   LOGIN: '/login',
-  PRODUCT: (id: number) => `/products/${id}`,
+  PRODUCT: (id: number) => `/product-details/${id}`,
 };
