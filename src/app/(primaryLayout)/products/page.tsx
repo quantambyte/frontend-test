@@ -1,5 +1,6 @@
 import ProductTable from '@/lib/components/products/ProductsTable';
 import { fetchProducts } from '@/lib/services/products/api';
+import { Box, Typography } from '@mui/material';
 
 /**
  * ProductsPage component fetches and displays a list of products.
@@ -13,6 +14,9 @@ export default async function ProductsPage() {
 
   return (
     <main data-testid='products-page'>
+      <Box bgcolor='white' p={1} borderRadius={1} mt={2} mx={2}>
+        <Typography variant='h5'>Products</Typography>
+      </Box>
       <ProductTable initialResponse={response} />
     </main>
   );

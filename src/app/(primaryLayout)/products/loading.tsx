@@ -32,10 +32,7 @@ export default function ProductTableSkeleton({
   );
 
   return (
-    <Box padding={4}>
-      <Typography variant='h5' fontWeight='bold' gutterBottom>
-        Products
-      </Typography>
+    <Box px={2} py={1}>
       <StyledTableContainer>
         <Table>
           <TableHead>

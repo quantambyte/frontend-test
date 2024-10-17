@@ -76,7 +76,7 @@ export default function ProductTable({ initialResponse }: IProductTableProps) {
   }
 
   return (
-    <Box p={2} data-testid='product-table-container'>
+    <Box px={2} py={1} data-testid='product-table-container'>
       <StyledTableContainer>
         <Table data-testid='product-table'>
           <TableHead>
