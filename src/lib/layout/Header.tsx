@@ -10,9 +10,7 @@ import {
   useTheme,
   Stack,
 } from '@mui/material';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
-import LanguageIcon from '@mui/icons-material/Language';
 import Avatar from '@mui/material/Avatar';
 import MenuIcon from '@mui/icons-material/Menu';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';

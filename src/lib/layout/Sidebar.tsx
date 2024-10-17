@@ -15,6 +15,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useRouter } from 'next/navigation';
 import { SidebarContainer, LogoWrapper, SidebarItem } from './style';
 
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
+
 const drawerWidth = 240;
 
 export default function Sidebar() {
@@ -24,7 +26,7 @@ export default function Sidebar() {
   const router = useRouter();
 
   const menuItems = [
-    { text: 'Analytics', route: '/' },
+    { text: 'Analytics', route: '/', icon: <AccountTreeIcon /> },
     { text: 'Project', route: '/' },
   ];
 
