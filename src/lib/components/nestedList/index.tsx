@@ -1,50 +1,61 @@
-import * as React from 'react';
-import ListSubheader from '@mui/material/ListSubheader';
+import React, { useState } from 'react';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
+import Link from 'next/link';
 
-export default function NestedList() {
-  const [open, setOpen] = React.useState(true);
+interface INestedListProps {
+  text: string;
+  icon: React.ReactNode;
+  children?: Array<{
+    text: string;
+    route: string;
+    icon: React.ReactNode;
+    id: string;
+  }>;
+}
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+export default function NestedList({ text, icon, children }: INestedListProps) {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => setOpen(!open);
 
   return (
     <List
       sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
       component='nav'
-      aria-labelledby='nested-list-subheader'
-      subheader={
-        <ListSubheader component='div' id='nested-list-subheader'>
-          Nested List Items
-        </ListSubheader>
-      }
     >
       <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary='Inbox' />
-        {open ? <ExpandLess /> : <ExpandMore />}
+        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemText primary={text} />
+        {children ? open ? <ExpandLess /> : <ExpandMore /> : null}
       </ListItemButton>
-      <Collapse in={open} timeout='auto' unmountOnExit>
-        <List component='div' disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary='Starred' />
-          </ListItemButton>
-        </List>
-      </Collapse>
+      {children && (
+        <Collapse in={open} timeout='auto' unmountOnExit>
+          <List component='div' disablePadding>
+            {children.map((child) => (
+              <Link
+                href={child.route}
+                key={child.id}
+                passHref
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+                }}
+              >
+                <ListItemButton sx={{ pl: 4 }}>
+                  <ListItemIcon>{child.icon}</ListItemIcon>
+                  <ListItemText primary={child.text} />
+                </ListItemButton>
+              </Link>
+            ))}
+          </List>
+        </Collapse>
+      )}
     </List>
   );
 }
