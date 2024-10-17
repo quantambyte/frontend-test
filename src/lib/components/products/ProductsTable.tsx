@@ -6,7 +6,6 @@ import {
   TableCell,
   TableHead,
   TableRow,
-  Typography,
   Box,
   TableFooter,
   TablePagination,
@@ -14,7 +13,7 @@ import {
 import { flexRender } from '@tanstack/react-table';
 import { IProductTableProps } from '@/lib/types/products';
 import { useProductTable } from '@/lib/hooks/useProductsTable';
-import ProductTableSkeleton from '@/app/products/loading';
+import ProductTableSkeleton from '@/app/(primaryLayout)/products/loading';
 import { ROUTES } from '@/lib/constants/routes';
 import Link from 'next/link';
 import Modal from '@/lib/components/modal';
@@ -77,11 +76,7 @@ export default function ProductTable({ initialResponse }: IProductTableProps) {
   }
 
   return (
-    <Box padding={4}>
-      <Typography variant='h5' fontWeight='bold' gutterBottom>
-        Products
-      </Typography>
-
+    <Box p={2}>
       <StyledTableContainer>
         <Table>
           <TableHead>

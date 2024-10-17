@@ -1,8 +1,10 @@
 'use client';
 
-import { Typography, Rating, Chip } from '@mui/material';
+import { Typography, Rating, Chip, Box, Tooltip } from '@mui/material';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { IProductDetailsProps } from '@/lib/types/products';
+import { ROUTES } from '@/lib/constants/routes';
 import {
   DetailsWrapper,
   ImageWrapper,
@@ -13,6 +15,8 @@ import {
   StyledDivider,
   TagWrapper,
 } from './style';
+import Button from '../button';
+import { ArrowBack } from '@mui/icons-material';
 
 /**
  * Component to display detailed information about a product.
@@ -42,18 +46,32 @@ import {
  * @returns {JSX.Element} The rendered product details component.
  */
 export default function ProductDetails({ product }: IProductDetailsProps) {
+  const router = useRouter();
+
   return (
     <ProductWrapper>
-      <ImageWrapper>
-        <Image
-          src={product.thumbnail}
-          alt={product.title}
-          width={400}
-          height={400}
-          style={{ objectFit: 'cover' }}
-          priority
-        />
-      </ImageWrapper>
+      <Box position='relative'>
+        <Tooltip title='Go Back'>
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={() => router.push(ROUTES.PRODUCTS)}
+            sx={{ position: 'absolute' }}
+          >
+            <ArrowBack />
+          </Button>
+        </Tooltip>
+        <ImageWrapper>
+          <Image
+            src={product.thumbnail}
+            alt={product.title}
+            width={400}
+            height={400}
+            style={{ objectFit: 'cover' }}
+            priority
+          />
+        </ImageWrapper>
+      </Box>
 
       <DetailsWrapper>
         <Typography variant='h4' fontWeight='bold'>
