@@ -9,15 +9,16 @@ Welcome to `frontend-test`, a cutting-edge **Next.js 14** application crafted wi
 
 # 🛠️ Tech Stack
 
-- **Framework**: [Next.js 14](https://nextjs.org/) - The powerhouse framework that forms the backbone of our application.
-- **UI Library**: [Material-UI (MUI)](https://mui.com/) - Crafting a sleek, responsive, and visually stunning user interface.
-- **State Management**: Harnessing built-in state hooks for optimal state efficiency.
-- **Form Handling**: [react-hook-form](https://react-hook-form.com/) - Making form management a breeze.
-- **Validation**: [zod](https://zod.dev/) - Ensuring data integrity with bulletproof validation.
-- **Authentication**: [Next-Auth](https://next-auth.js.org/) - Delivering seamless and secure user authentication.
-- **Data Fetching**: Real-time server-side data fetching from [dummyjson.com](https://dummyjson.com/).
-- **Routing**: Dynamic routes powered by `Next.js App Router` for a fluid navigation experience.
-- **Table Handling**: [Tanstack React Table](https://tanstack.com/table) - Masterful table management for intricate data.
+- **Framework**: [Next.js 14](https://nextjs.org/) - The backbone framework of our application, providing robust features and performance.
+- **UI Library**: [Material-UI (MUI)](https://mui.com/) - Used for creating a sleek, responsive, and visually appealing user interface.
+- **State Management**: Utilizing React's built-in state hooks for efficient state management.
+- **Form Handling**: [react-hook-form](https://react-hook-form.com/) - Simplifies form management with minimal re-renders.
+- **Validation**: [zod](https://zod.dev/) - Provides strong data validation to ensure data integrity.
+- **Authentication**: [Next-Auth](https://next-auth.js.org/) - Offers secure and seamless user authentication.
+- **Data Fetching**: Implements real-time server-side data fetching from [dummyjson.com](https://dummyjson.com/).
+- **Routing**: Utilizes `Next.js App Router` for dynamic routing and smooth navigation.
+- **Table Handling**: [Tanstack React Table](https://tanstack.com/table) - Efficiently manages complex table data with ease.
+- **Testing**: Comprehensive testing using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) to ensure code reliability and performance.
 
 # 🚀 Deployment
 
@@ -25,6 +26,27 @@ Our application is seamlessly deployed using **Vercel**, ensuring high performan
 
 - **Platform**: [Vercel](https://vercel.com/) - A cloud platform for static sites and Serverless Functions that fits perfectly with our Next.js application.
 - **URL**: [frontend-test-amber-nine.vercel.app](https://frontend-test-amber-nine.vercel.app) - Visit our live application to explore its features and functionality.
+
+# 🧪 Testing
+
+Our application is thoroughly tested using **Jest** and **React Testing Library**. Each component and page has a corresponding test file located in the `__tests__` directory within the same folder.
+
+- **Run all tests**:
+
+  ```bash
+  npm run test
+  ```
+
+- **Run tests for a specific file**:
+
+  ```bash
+  npm run test filename
+  ```
+
+- **Watch mode for a specific file**:
+  ```bash
+  npm run test:watch filename
+  ```
 
 # 🔍 Modules
 

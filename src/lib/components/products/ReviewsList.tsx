@@ -15,10 +15,14 @@ export default function ReviewsList({ reviews }: IReviewsListProps) {
     <>
       {reviews.length > 0 ? (
         reviews.map((review, index) => (
-          <ReviewCard review={review} key={index} />
+          <ReviewCard
+            review={review}
+            key={index}
+            data-testid={`review-card-${index}`}
+          />
         ))
       ) : (
-        <Typography variant='body1'>
+        <Typography variant='body1' data-testid='no-reviews-message'>
           No reviews available for this product.
         </Typography>
       )}

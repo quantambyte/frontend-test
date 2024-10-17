@@ -12,7 +12,7 @@ export default async function ProductsPage() {
   const response = await fetchProducts();
 
   return (
-    <main>
+    <main data-testid='products-page'>
       <ProductTable initialResponse={response} />
     </main>
   );

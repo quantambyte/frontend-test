@@ -72,21 +72,25 @@ export default function ProductTable({ initialResponse }: IProductTableProps) {
   };
 
   if (loading) {
-    return <ProductTableSkeleton />;
+    return <ProductTableSkeleton data-testid='product-table-skeleton' />;
   }
 
   return (
-    <Box p={2}>
+    <Box p={2} data-testid='product-table-container'>
       <StyledTableContainer>
-        <Table>
+        <Table data-testid='product-table'>
           <TableHead>
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow
+                key={headerGroup.id}
+                data-testid='product-table-header-row'
+              >
                 {headerGroup.headers.map((header) => (
                   <TableCell
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
                     style={{ cursor: 'pointer', fontWeight: 600 }}
+                    data-testid={`product-table-header-cell-${header.id}`}
                   >
                     {header.isPlaceholder
                       ? null
@@ -111,16 +115,19 @@ export default function ProductTable({ initialResponse }: IProductTableProps) {
                 sx={{
                   backgroundColor: index % 2 === 0 ? '#F5F5F5' : '#ffffff',
                 }}
+                data-testid={`product-table-row-${row.id}`}
               >
                 {row.getVisibleCells().map((cell, index) => (
                   <TableCell
                     key={cell.id}
                     sx={{ border: '.1px solid #E0E0E0' }}
+                    data-testid={`product-table-cell-${cell.id}`}
                   >
                     {index === 1 ? (
                       <Link
                         href={ROUTES.PRODUCT(row.original.id)}
                         style={{ textDecoration: 'none', color: 'inherit' }}
+                        data-testid={`product-link-${row.original.id}`}
                       >
                         {flexRender(
                           cell.column.columnDef.cell,
@@ -145,6 +152,7 @@ export default function ProductTable({ initialResponse }: IProductTableProps) {
                 page={pageIndex}
                 onPageChange={handlePageChange}
                 onRowsPerPageChange={handleRowsPerPageChange}
+                data-testid='product-table-pagination'
               />
             </TableRow>
           </TableFooter>
@@ -156,6 +164,7 @@ export default function ProductTable({ initialResponse }: IProductTableProps) {
           open={isReviewsModalOpen}
           onClose={handleCloseModal}
           title='Product Reviews'
+          data-testid='product-reviews-modal'
         >
           <ReviewsList reviews={selectedProductReviews} />
         </Modal>

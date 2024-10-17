@@ -49,19 +49,22 @@ export default function ProductDetails({ product }: IProductDetailsProps) {
   const router = useRouter();
 
   return (
-    <ProductWrapper>
-      <Box position='relative'>
+    <ProductWrapper data-testid='product-wrapper'>
+      <Box position='relative' data-testid='image-box'>
         <Tooltip title='Go Back'>
-          <Button
-            variant='contained'
-            color='primary'
-            onClick={() => router.push(ROUTES.PRODUCTS)}
-            sx={{ position: 'absolute' }}
-          >
-            <ArrowBack />
-          </Button>
+          <span>
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={() => router.push(ROUTES.PRODUCTS)}
+              sx={{ position: 'absolute' }}
+              data-testid='back-button'
+            >
+              <ArrowBack />
+            </Button>
+          </span>
         </Tooltip>
-        <ImageWrapper>
+        <ImageWrapper data-testid='image-wrapper'>
           <Image
             src={product.thumbnail}
             alt={product.title}
@@ -69,43 +72,56 @@ export default function ProductDetails({ product }: IProductDetailsProps) {
             height={400}
             style={{ objectFit: 'cover' }}
             priority
+            data-testid='product-image'
           />
         </ImageWrapper>
       </Box>
 
-      <DetailsWrapper>
-        <Typography variant='h4' fontWeight='bold'>
+      <DetailsWrapper data-testid='details-wrapper'>
+        <Typography variant='h4' fontWeight='bold' data-testid='product-title'>
           {product.title}
         </Typography>
 
-        <Typography variant='body2' color='textSecondary' sx={{ mb: 1 }}>
+        <Typography
+          variant='body2'
+          color='textSecondary'
+          sx={{ mb: 1 }}
+          data-testid='product-brand-sku'
+        >
           Brand: {product.brand} | SKU: {product.sku}
         </Typography>
 
-        <Rating value={product.rating} readOnly />
+        <Rating value={product.rating} readOnly data-testid='product-rating' />
 
-        <Typography variant='body1' sx={{ mt: 2 }}>
+        <Typography
+          variant='body1'
+          sx={{ mt: 2 }}
+          data-testid='product-description'
+        >
           {product.description}
         </Typography>
 
-        <PriceTag>
+        <PriceTag data-testid='product-price'>
           ${product.price.toFixed(2)}{' '}
           <Typography
             component='span'
             sx={{ fontSize: '16px', color: '#565959' }}
+            data-testid='product-discount'
           >
             ({product.discountPercentage}% off)
           </Typography>
         </PriceTag>
 
-        <StyledDivider />
+        <StyledDivider data-testid='divider-1' />
 
-        <SectionTitle>Product Details</SectionTitle>
-        <InfoRow>
+        <SectionTitle data-testid='section-title-details'>
+          Product Details
+        </SectionTitle>
+        <InfoRow data-testid='info-row-weight'>
           <Typography>Weight:</Typography>
           <Typography>{product.weight} lbs</Typography>
         </InfoRow>
-        <InfoRow>
+        <InfoRow data-testid='info-row-dimensions'>
           <Typography>Dimensions:</Typography>
           <Typography>
             {product.dimensions.width}W x {product.dimensions.height}H x{' '}
@@ -113,37 +129,48 @@ export default function ProductDetails({ product }: IProductDetailsProps) {
           </Typography>
         </InfoRow>
 
-        <StyledDivider />
+        <StyledDivider data-testid='divider-2' />
 
-        <SectionTitle>Tags</SectionTitle>
-        <TagWrapper>
+        <SectionTitle data-testid='section-title-tags'>Tags</SectionTitle>
+        <TagWrapper data-testid='tag-wrapper'>
           {product.tags.map((tag) => (
-            <Chip key={tag} label={tag} color='primary' />
+            <Chip
+              key={tag}
+              label={tag}
+              color='primary'
+              data-testid={`tag-${tag}`}
+            />
           ))}
         </TagWrapper>
 
-        <StyledDivider />
+        <StyledDivider data-testid='divider-3' />
 
-        <SectionTitle>Additional Information</SectionTitle>
-        <InfoRow>
+        <SectionTitle data-testid='section-title-additional'>
+          Additional Information
+        </SectionTitle>
+        <InfoRow data-testid='info-row-warranty'>
           <Typography>Warranty:</Typography>
           <Typography>{product.warrantyInformation}</Typography>
         </InfoRow>
-        <InfoRow>
+        <InfoRow data-testid='info-row-shipping'>
           <Typography>Shipping:</Typography>
           <Typography>{product.shippingInformation}</Typography>
         </InfoRow>
-        <InfoRow>
+        <InfoRow data-testid='info-row-availability'>
           <Typography>Availability:</Typography>
           <Typography color={product.stock > 0 ? 'green' : 'red'}>
             {product.availabilityStatus}
           </Typography>
         </InfoRow>
 
-        <StyledDivider />
+        <StyledDivider data-testid='divider-4' />
 
-        <SectionTitle>Return Policy</SectionTitle>
-        <Typography variant='body2'>{product.returnPolicy}</Typography>
+        <SectionTitle data-testid='section-title-return'>
+          Return Policy
+        </SectionTitle>
+        <Typography variant='body2' data-testid='return-policy'>
+          {product.returnPolicy}
+        </Typography>
       </DetailsWrapper>
     </ProductWrapper>
   );
