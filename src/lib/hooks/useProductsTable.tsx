@@ -50,6 +50,12 @@ export const useProductTable = ({
       accessorKey: 'description',
       header: 'Description',
       enableSorting: true,
+      cell: (info) => {
+        const description = info.getValue<string>();
+        return description.length > 100
+          ? `${description.substring(0, 100)}...`
+          : description;
+      },
     },
     {
       accessorKey: 'category',
