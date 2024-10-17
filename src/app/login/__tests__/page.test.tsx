@@ -8,7 +8,7 @@ jest.mock('next-auth/react', () => ({
   signIn: jest.fn(),
 }));
 
-jest.mock('../../src/lib/services/auth/api', () => ({
+jest.mock('../../../../src/lib/services/auth/api', () => ({
   login: jest.fn(),
 }));
 

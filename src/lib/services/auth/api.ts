@@ -1,7 +1,7 @@
 import { ENVIRONMENT_VARIABLES } from '@/lib/config';
 import { ILoginPayload, ILoginResponse } from '@/lib/types/auth';
 
-const { BASE_URL } = ENVIRONMENT_VARIABLES;
+export const { BASE_URL } = ENVIRONMENT_VARIABLES;
 
 /**
  * Sends a login request to the authentication API.

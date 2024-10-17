@@ -21,14 +21,19 @@ export default function ReviewCard({ review }: ReviewCardProps) {
       borderColor='grey.300'
       borderRadius={4}
       bgcolor='white'
+      data-testid='review-card'
     >
-      <Typography variant='h6' gutterBottom>
+      <Typography variant='h6' gutterBottom data-testid='reviewer-name'>
         Reviewer: {review.reviewerName}
       </Typography>
-      <Typography variant='body1' gutterBottom>
+      <Typography variant='body1' gutterBottom data-testid='review-comment'>
         <strong>Comment:</strong> {review.comment}
       </Typography>
-      <Typography variant='body1' color='textSecondary'>
+      <Typography
+        variant='body1'
+        color='textSecondary'
+        data-testid='review-rating'
+      >
         <strong>Rating:</strong> {review.rating} / 5
       </Typography>
     </Box>

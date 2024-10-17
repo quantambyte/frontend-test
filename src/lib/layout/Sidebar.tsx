@@ -5,7 +5,6 @@ import {
   Box,
   Drawer,
   List,
-  ListItem,
   ListItemText,
   IconButton,
   Typography,
@@ -13,34 +12,10 @@ import {
   useTheme,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import styled from '@emotion/styled';
 import { useRouter } from 'next/navigation';
+import { SidebarContainer, LogoWrapper, SidebarItem } from './style';
 
 const drawerWidth = 240;
-
-const SidebarContainer = styled(Box)`
-  width: ${drawerWidth}px;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  height: 100vh;
-`;
-
-const LogoWrapper = styled(Box)`
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  border-bottom: 1px solid #e0e0e0;
-`;
-
-const SidebarItem = styled(ListItem)`
-  padding-left: 16px;
-  &:hover {
-    background-color: #f0f0f0;
-  }
-`;
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,8 +34,7 @@ export default function Sidebar() {
   };
 
   return (
-    <Box>
-      {/* Sidebar for larger screens */}
+    <Box data-testid='sidebar-box'>
       {!isMobile && (
         <Drawer
           variant='permanent'
@@ -68,16 +42,20 @@ export default function Sidebar() {
           open
           sx={{ width: drawerWidth, flexShrink: 0 }}
           PaperProps={{ sx: { width: drawerWidth } }}
+          data-testid='desktop-drawer'
         >
-          <SidebarContainer>
-            <LogoWrapper>
-              <Typography variant='h6'>LOGO</Typography>
+          <SidebarContainer data-testid='sidebar-container'>
+            <LogoWrapper data-testid='logo-wrapper'>
+              <Typography variant='h6' data-testid='logo-text'>
+                LOGO
+              </Typography>
             </LogoWrapper>
-            <List>
+            <List data-testid='menu-list'>
               {menuItems.map((item) => (
                 <SidebarItem
                   key={item.text}
                   onClick={() => handleNavigation(item.route)}
+                  data-testid={`menu-item-${item.text.toLowerCase()}`}
                 >
                   <ListItemText primary={item.text} />
                 </SidebarItem>
@@ -96,24 +74,29 @@ export default function Sidebar() {
               top: 16,
               left: 16,
             }}
+            data-testid='menu-icon-button'
           >
-            <MenuIcon />
+            <MenuIcon data-testid='menu-icon' />
           </IconButton>
           <Drawer
             anchor='left'
             open={isOpen}
             onClose={() => setIsOpen(false)}
             PaperProps={{ sx: { width: drawerWidth } }}
+            data-testid='mobile-drawer'
           >
-            <SidebarContainer>
-              <LogoWrapper>
-                <Typography variant='h6'>LOGO</Typography>
+            <SidebarContainer data-testid='sidebar-container'>
+              <LogoWrapper data-testid='logo-wrapper'>
+                <Typography variant='h6' data-testid='logo-text'>
+                  LOGO
+                </Typography>
               </LogoWrapper>
-              <List>
+              <List data-testid='menu-list'>
                 {menuItems.map((item) => (
                   <SidebarItem
                     key={item.text}
                     onClick={() => handleNavigation(item.route)}
+                    data-testid={`menu-item-${item.text.toLowerCase()}`}
                   >
                     <ListItemText primary={item.text} />
                   </SidebarItem>
